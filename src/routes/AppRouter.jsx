@@ -1,13 +1,16 @@
-
-import { Routes, Route } from "react-router";
+import { Routes, Route } from "react-router-dom";
 import LoginPage from "../pages/LoginPage";
-import RegisterPage from "../pages/RegisterPage";
+import RegisterPageDoctor from "../pages/RegisterPageDoctor";
+import RegisterPagePatient from "../pages/RegisterPagePatient";
+import RoleSelectionPage from "../pages/RoleSelectionPage";
 
 function AppRouter() {
   return (
     <Routes>
       <Route path="/" element={<LoginPage />} />
-      <Route path="/register" element={<RegisterPage />} />
+      <Route path="/register/doctor" element={<RegisterPageDoctor />} />
+      <Route path="/register/patient" element={<RegisterPagePatient />} />
+      <Route path="/roleSelection" element={<RoleSelectionPage />} />
     </Routes>
   );
 }

@@ -1,7 +1,7 @@
 import { Link, useNavigate } from "react-router";
 import logo from "../assets/logoSahtekonline.png";
 import patientImage from "../assets/patient-card.png";
-import doctorImage from "../assets/doctor-card.png";
+import doctorImage from "../assets/doctor-card.jpg";
 
 function RoleSelectionPage() {
   const navigate = useNavigate();
@@ -13,7 +13,7 @@ function RoleSelectionPage() {
           <img src={logo} alt="Sahtek Online Logo" className="role-logo-image" />
         </div>
 
-        <h1 className="role-title">Welcome to MediApp</h1>
+        <h1 className="role-title">Welcome to Sahtek Online web site</h1>
         <p className="role-subtitle">Select your role to continue</p>
 
         <div className="role-cards">
@@ -24,7 +24,7 @@ function RoleSelectionPage() {
             <div className="role-card-image-wrap">
               <img src={patientImage} alt="Patient" className="role-card-image" />
             </div>
-            <h2 className="role-card-title">I’m a Patient</h2>
+            <h2 className="role-card-title">I&apos;m a Patient</h2>
           </div>
 
           <div
@@ -34,7 +34,7 @@ function RoleSelectionPage() {
             <div className="role-card-image-wrap">
               <img src={doctorImage} alt="Doctor" className="role-card-image" />
             </div>
-            <h2 className="role-card-title">I’m a Doctor</h2>
+            <h2 className="role-card-title">I&apos;m a Doctor</h2>
           </div>
         </div>
 

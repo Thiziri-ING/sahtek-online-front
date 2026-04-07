@@ -1,9 +1,17 @@
+import { useState } from "react";
 import logo from "../assets/logoSahtekonline.png";
-import { MdEmail, MdLock, MdVisibilityOff } from "react-icons/md";
+import {
+  MdEmail,
+  MdLock,
+  MdVisibility,
+  MdVisibilityOff,
+} from "react-icons/md";
 import { FcGoogle } from "react-icons/fc";
 import { FaFacebookF, FaTwitter, FaLinkedinIn } from "react-icons/fa";
 
 function LoginPage() {
+  const [showPassword, setShowPassword] = useState(false);
+
   return (
     <div className="login-page">
       <div className="login-container">
@@ -29,10 +37,19 @@ function LoginPage() {
               <span className="input-icon left">
                 <MdLock />
               </span>
-              <input type="password" placeholder="********************" />
-              <span className="input-icon right">
-                <MdVisibilityOff />
-              </span>
+
+              <input
+                type={showPassword ? "text" : "password"}
+                placeholder="********************"
+              />
+
+              <button
+                type="button"
+                className="password-toggle"
+                onClick={() => setShowPassword(!showPassword)}
+              >
+                {showPassword ? <MdVisibility /> : <MdVisibilityOff />}
+              </button>
             </div>
 
             <div className="forgot-row">
@@ -52,7 +69,7 @@ function LoginPage() {
           </form>
 
           <p className="signup-text">
-            Don’t Have An Account? <a href="/">Sign Up!</a>
+            Don't Have An Account? <a href="/">Sign Up!</a>
           </p>
 
           <div className="social-icons">

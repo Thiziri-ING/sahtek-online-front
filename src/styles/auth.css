@@ -4,65 +4,72 @@
   box-sizing: border-box;
 }
 
-body {
-  font-family: Arial, sans-serif;
+html,
+body,
+#root {
+  width: 100%;
+  min-height: 100%;
+  margin: 0;
+  overflow-x: hidden;
+  overflow-y: auto;
 }
 
-a {
-  text-decoration: none;
-}
+
+/* login page css */
 
 .login-page {
-  min-height: 100vh;
-  background:
-    linear-gradient(rgba(52, 163, 245, 0.82), rgba(52, 163, 245, 0.82)),
-    url("../assets/loginpage.jpg");
-  background-size: cover;
-  background-position: center;
+  width: 100%;
+  min-height: 100dvh;
+  padding: 18px;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 28px;
+  background:
+    linear-gradient(rgba(48, 145, 245, 0.42), rgba(16, 82, 177, 0.34)),
+    url("../assets/loginpage.jpg");
+  background-size: cover;
+  background-position: center;
 }
 
 .login-container {
   width: 100%;
-  max-width: 1060px;
-  min-height: 610px;
+  max-width: 1360px;
+  min-height: calc(100dvh - 36px);
   display: grid;
-  grid-template-columns: 1fr 0.93fr;
-  background: #fdfdfd;
-  border-radius: 8px;
+  grid-template-columns: 1fr 1fr;
+  background: rgba(255, 255, 255, 0.92);
+  border-radius: 24px;
   overflow: hidden;
-  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.18);
-  border: 2px solid rgba(0, 0, 0, 0.35);
+  border: 2px solid rgba(230, 236, 247, 0.9);
+  box-shadow: 0 22px 60px rgba(16, 63, 145, 0.22);
+  backdrop-filter: blur(4px);
 }
 
 .login-left {
+  min-height: 100%;
   background:
-    linear-gradient(rgba(31, 149, 238, 0.42), rgba(31, 149, 238, 0.42)),
+    linear-gradient(rgba(25, 115, 220, 0.26), rgba(18, 77, 172, 0.26)),
     url("../assets/loginpage.jpg");
   background-size: cover;
   background-position: center;
-  min-height: 610px;
-  border-right: 2px solid rgba(0, 0, 0, 0.35);
+  border-right: 1px solid rgba(220, 226, 240, 0.95);
 }
 
 .login-right {
-  background: #f8f8f8;
+  background: rgba(255, 255, 255, 0.97);
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding: 34px 58px 28px;
+  padding: 34px 56px 28px;
 }
 
 .login-logo {
   text-align: center;
-  margin-bottom: 6px;
+  margin-bottom: 10px;
 }
 
 .logo-image {
-  width: 132px;
+  width: 145px;
   max-width: 100%;
   height: auto;
   object-fit: contain;
@@ -70,25 +77,31 @@ a {
 
 .login-title {
   text-align: center;
-  font-size: 66px;
+  font-size: clamp(54px, 5vw, 76px);
   line-height: 1;
-  font-weight: 300;
-  color: #333333;
-  margin-top: 10px;
-  margin-bottom: 4px;
+  font-weight: 600;
+  color: #173d77;
+  margin-bottom: 12px;
+  font-family: Georgia, "Times New Roman", serif;
+  letter-spacing: -1px;
 }
 
 .login-subtitle {
+  max-width: 420px;
+  margin: 0 auto 28px;
   text-align: center;
-  font-size: 15px;
-  color: #b0b0b0;
-  margin-bottom: 34px;
+  font-size: 16px;
+  line-height: 1.5;
+  color: #7a8499;
 }
 
 .login-form {
+  width: 100%;
+  max-width: 540px;
+  margin: 0 auto;
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 18px;
 }
 
 .input-box {
@@ -98,33 +111,40 @@ a {
 
 .input-box input {
   width: 100%;
-  height: 56px;
-  border: 1px solid #d8d8d8;
+  height: 64px;
+  border: 1.5px solid #dde5f0;
   border-radius: 999px;
-  background: #fbfbfb;
+  background: #ffffff;
   outline: none;
-  font-size: 15px;
-  color: #a5a5a5;
+  font-size: 17px;
+  color: #4a5670;
+  box-shadow: inset 0 1px 2px rgba(16, 24, 40, 0.02);
+  transition: all 0.2s ease;
 }
 
 .input-box input::placeholder {
-  color: #b2b2b2;
+  color: #7f8aa0;
+}
+
+.input-box input:focus {
+  border-color: #4a97ff;
+  box-shadow: 0 0 0 4px rgba(74, 151, 255, 0.12);
 }
 
 .has-left-icon input {
-  padding: 0 22px 0 66px;
+  padding: 0 24px 0 70px;
 }
 
 .has-both-icons input {
-  padding: 0 58px 0 66px;
+  padding: 0 68px 0 70px;
 }
 
 .input-icon {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  color: #b7b7b7;
-  font-size: 23px;
+  color: #7d879b;
+  font-size: 24px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -136,94 +156,143 @@ a {
 
 .input-icon.right {
   right: 24px;
-  font-size: 22px;
+  left: auto;
+  cursor: pointer;
+}
+
+.password-toggle {
+  position: absolute;
+  top: 50%;
+  right: 22px;
+  transform: translateY(-50%);
+  border: none;
+  background: transparent;
+  color: #7d879b;
+  font-size: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  padding: 0;
 }
 
 .forgot-row {
-  margin-top: -8px;
+  margin-top: -6px;
   text-align: right;
 }
 
 .forgot-row a {
-  font-size: 13px;
-  color: #b4b4b4;
+  font-size: 14px;
+  color: #2276f3;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.forgot-row a:hover {
   text-decoration: underline;
 }
 
 .google-btn {
   width: 100%;
-  height: 56px;
-  border: 1px solid #d8d8d8;
+  height: 64px;
+  border: 1.5px solid #dde5f0;
   border-radius: 999px;
-  background: #fbfbfb;
-  color: #b0b0b0;
-  font-size: 16px;
+  background: #ffffff;
+  color: #24406d;
+  font-size: 17px;
+  font-weight: 500;
   cursor: pointer;
   display: flex;
   align-items: center;
-  justify-content: flex-start;
-  padding: 0 28px;
-  gap: 18px;
+  justify-content: center;
+  gap: 14px;
+  box-shadow: 0 10px 20px rgba(20, 62, 134, 0.05);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.google-btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 14px 24px rgba(20, 62, 134, 0.08);
 }
 
 .google-icon {
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 30px;
+  font-size: 28px;
   flex-shrink: 0;
 }
 
 .google-text {
-  flex: 1;
-  text-align: left;
-  font-weight: 400;
+  text-align: center;
+  font-weight: 500;
 }
 
 .login-btn {
-  width: 180px;
-  height: 54px;
-  margin: 8px auto 0;
+  width: 100%;
+  height: 64px;
   border: none;
   border-radius: 999px;
-  background: #2497ee;
-  color: white;
+  background: linear-gradient(90deg, #58a7ff 0%, #246ff1 100%);
+  color: #ffffff;
   font-size: 18px;
   font-weight: 700;
   cursor: pointer;
-  box-shadow: none;
+  box-shadow: 0 14px 28px rgba(36, 111, 241, 0.24);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.login-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 18px 32px rgba(36, 111, 241, 0.28);
 }
 
 .signup-text {
   text-align: center;
-  margin-top: 12px;
-  color: #a7a7a7;
-  font-size: 14px;
+  margin-top: 10px;
+  color: #6e7b94;
+  font-size: 15px;
 }
 
 .signup-text a {
-  color: #5c5c5c;
+  color: #2276f3;
   font-weight: 700;
+  text-decoration: none;
+}
+
+.signup-text a:hover {
+  text-decoration: underline;
 }
 
 .social-icons {
   display: flex;
   justify-content: center;
-  gap: 24px;
-  margin-top: 26px;
-  color: #b8b8b8;
-  font-size: 20px;
+  gap: 16px;
+  margin-top: 14px;
 }
 
 .social-icons span {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  border: 1.5px solid #e2e8f1;
+  background: #ffffff;
+  color: #8b96ab;
+  font-size: 20px;
   display: flex;
   align-items: center;
   justify-content: center;
+  box-shadow: 0 10px 20px rgba(20, 62, 134, 0.05);
 }
 
-@media (max-width: 900px) {
+@media (max-width: 1100px) {
   .login-container {
     grid-template-columns: 1fr;
+    min-height: auto;
   }
 
   .login-left {
@@ -231,17 +300,53 @@ a {
   }
 
   .login-right {
-    padding: 34px 24px 28px;
+    padding: 28px 24px 24px;
   }
 
   .login-title {
     font-size: 48px;
   }
 
-  .login-btn {
-    width: 100%;
+  .login-form {
+    max-width: 100%;
   }
 }
+
+@media (max-width: 640px) {
+  .login-page {
+    padding: 12px;
+  }
+
+  .login-container {
+    border-radius: 18px;
+  }
+
+  .login-right {
+    padding: 22px 16px 20px;
+  }
+
+  .logo-image {
+    width: 128px;
+  }
+
+  .login-title {
+    font-size: 38px;
+  }
+
+  .input-box input,
+  .google-btn,
+  .login-btn {
+    height: 56px;
+    font-size: 15px;
+  }
+
+  .social-icons span {
+    width: 46px;
+    height: 46px;
+    font-size: 18px;
+  }
+}
+/*role selection page*/
 .register-page {
   min-height: 100vh;
   background:
@@ -581,5 +686,499 @@ a {
   .role-card {
     width: 100%;
     max-width: 340px;
+  }
+}
+/*parie doctor*/
+.doctor-register-page {
+  min-height: 100vh;
+  padding: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow-y: auto;
+  background:
+    linear-gradient(rgba(65, 146, 245, 0.45), rgba(65, 146, 245, 0.18)),
+    url("../assets/registerpage.jpg");
+  background-size: cover;
+  background-position: center;
+}
+
+.doctor-register-container {
+  width: 100%;
+  max-width: 1280px;
+  min-height: calc(100vh - 36px);
+  height: auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  background: rgba(255, 255, 255, 0.88);
+  border-radius: 18px;
+  overflow: hidden;
+  border: 2px solid rgba(227, 231, 241, 0.9);
+  box-shadow: 0 20px 55px rgba(34, 89, 168, 0.18);
+  backdrop-filter: blur(3px);
+}
+
+.doctor-register-left {
+  height: auto;
+  min-height: 100%;
+  background:
+    linear-gradient(rgba(31, 127, 230, 0.28), rgba(31, 127, 230, 0.28)),
+    url("../assets/registerpage.jpg");
+  background-size: cover;
+  background-position: center;
+  border-right: 1px solid rgba(220, 226, 240, 0.95);
+}
+
+.doctor-register-right {
+  height: auto;
+  min-height: 100%;
+  background: rgba(255, 255, 255, 0.92);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 28px 48px 28px;
+}
+
+.doctor-register-logo {
+  text-align: center;
+  margin-bottom: 8px;
+}
+
+.doctor-register-logo-image {
+  width: 150px;
+  max-width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+
+.doctor-register-title {
+  text-align: center;
+  font-size: 48px;
+  font-weight: 600;
+  line-height: 1.05;
+  color: #153b72;
+  margin-bottom: 18px;
+}
+
+.doctor-register-form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.doctor-register-name-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.doctor-register-form input {
+  width: 100%;
+  height: 52px;
+  border: 1.5px solid #e2e7f0;
+  border-radius: 999px;
+  background: #ffffff;
+  padding: 0 22px;
+  font-size: 15px;
+  color: #42506a;
+  outline: none;
+  box-shadow: inset 0 1px 2px rgba(16, 24, 40, 0.02);
+}
+
+.doctor-register-form input::placeholder {
+  color: #6e7890;
+}
+
+.doctor-register-form input:focus {
+  border-color: #4a97ff;
+  box-shadow: 0 0 0 3px rgba(74, 151, 255, 0.12);
+}
+
+.doctor-phone-input {
+  display: flex;
+  align-items: center;
+  height: 52px;
+  border: 1.5px solid #e2e7f0;
+  border-radius: 999px;
+  background: #ffffff;
+  overflow: hidden;
+}
+
+.doctor-phone-prefix {
+  height: 100%;
+  min-width: 120px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 0 16px 0 18px;
+  color: #4a546b;
+  border-right: 1px solid #e2e7f0;
+  background: #ffffff;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.doctor-flag {
+  font-size: 24px;
+  line-height: 1;
+}
+
+.doctor-code {
+  color: #4a546b;
+}
+
+.doctor-phone-input input {
+  border: none;
+  box-shadow: none;
+  height: 100%;
+  border-radius: 0;
+  padding: 0 18px;
+}
+
+.doctor-phone-input input:focus {
+  box-shadow: none;
+}
+
+.doctor-register-btn {
+  width: 100%;
+  height: 54px;
+  margin-top: 4px;
+  border: none;
+  border-radius: 999px;
+  background: linear-gradient(90deg, #56a5ff 0%, #2476f3 100%);
+  color: #ffffff;
+  font-size: 18px;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 12px 24px rgba(45, 118, 243, 0.23);
+}
+
+.doctor-google-btn {
+  width: 100%;
+  height: 52px;
+  border: 1.5px solid #e2e7f0;
+  border-radius: 999px;
+  background: #ffffff;
+  color: #3f4b66;
+  font-size: 15px;
+  font-weight: 500;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+}
+
+.doctor-google-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+}
+
+.doctor-register-login-text {
+  margin-top: 10px;
+  text-align: center;
+  color: #7f889d;
+  font-size: 13px;
+}
+
+.doctor-register-login-text a {
+  color: #2e3e63;
+  font-weight: 700;
+  text-decoration: underline;
+}
+
+.doctor-register-socials {
+  margin-top: 10px;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  color: #8e97ad;
+  font-size: 16px;
+}
+
+.doctor-register-socials span {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@media (max-width: 1100px) {
+  .doctor-register-page {
+    height: auto;
+    min-height: 100vh;
+    overflow: visible;
+  }
+
+  .doctor-register-container {
+    height: auto;
+    grid-template-columns: 1fr;
+  }
+
+  .doctor-register-left {
+    display: none;
+  }
+
+  .doctor-register-right {
+    padding: 28px 24px 24px;
+  }
+
+  .doctor-register-title {
+    font-size: 40px;
+  }
+}
+
+@media (max-width: 640px) {
+  .doctor-register-page {
+    padding: 18px;
+  }
+
+  .doctor-register-name-row {
+    grid-template-columns: 1fr;
+  }
+
+  .doctor-phone-input {
+    flex-direction: column;
+    height: auto;
+    border-radius: 22px;
+  }
+
+  .doctor-phone-prefix {
+    width: 100%;
+    min-width: unset;
+    height: 48px;
+    border-right: none;
+    border-bottom: 1px solid #e2e7f0;
+  }
+
+  .doctor-phone-input input {
+    height: 52px;
+    width: 100%;
+  }
+}
+
+/*patient part css*/
+
+.patient-register-page {
+  width: 100%;
+  height: 100dvh;
+  min-height: 100dvh;
+  padding: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  box-sizing: border-box;
+  background:
+    linear-gradient(rgba(65, 146, 245, 0.45), rgba(65, 146, 245, 0.18)),
+    url("../assets/registerpage.jpg");
+  background-size: cover;
+  background-position: center;
+}
+.patient-register-container {
+  width: 100%;
+  max-width: 1280px;
+  height: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 18px;
+  overflow: hidden;
+  border: 2px solid rgba(227, 231, 241, 0.9);
+  box-shadow: 0 20px 55px rgba(34, 89, 168, 0.18);
+  backdrop-filter: blur(3px);
+}
+.patient-register-left {
+  height: 100%;
+  background:
+    linear-gradient(rgba(31, 127, 230, 0.28), rgba(31, 127, 230, 0.28)),
+    url("../assets/registerpage.jpg");
+  background-size: cover;
+  background-position: center;
+  border-right: 1px solid rgba(220, 226, 240, 0.95);
+}
+
+.patient-register-right {
+  height: 100%;
+  background: rgba(255, 255, 255, 0.94);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 20px 48px 16px;
+}
+
+.patient-register-logo {
+  text-align: center;
+  margin-bottom: 8px;
+}
+
+.patient-register-logo-image {
+  width: 150px;
+  max-width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+
+.patient-register-title {
+  text-align: center;
+  font-size: 48px;
+  font-weight: 600;
+  line-height: 1.05;
+  color: #153b72;
+  margin-bottom: 18px;
+}
+
+.patient-register-form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.patient-register-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.patient-register-form input,
+.patient-register-select-wrap select {
+  width: 100%;
+  height: 52px;
+  border: 1.5px solid #e2e7f0;
+  border-radius: 999px;
+  background: #ffffff;
+  padding: 0 22px;
+  font-size: 15px;
+  color: #42506a;
+  outline: none;
+  box-shadow: inset 0 1px 2px rgba(16, 24, 40, 0.02);
+}
+
+.patient-phone-input {
+  display: flex;
+  align-items: center;
+  height: 52px;
+  border: 1.5px solid #e2e7f0;
+  border-radius: 999px;
+  background: #ffffff;
+  overflow: hidden;
+}
+
+.patient-phone-prefix {
+  height: 100%;
+  min-width: 120px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 0 16px 0 18px;
+  color: #4a546b;
+  border-right: 1px solid #e2e7f0;
+  background: #ffffff;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.patient-phone-input input {
+  border: none;
+  box-shadow: none;
+  height: 100%;
+  border-radius: 0;
+  padding: 0 18px;
+}
+
+.patient-register-btn {
+  width: 100%;
+  height: 54px;
+  margin-top: 4px;
+  border: none;
+  border-radius: 999px;
+  background: linear-gradient(90deg, #56a5ff 0%, #2476f3 100%);
+  color: #ffffff;
+  font-size: 18px;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 12px 24px rgba(45, 118, 243, 0.23);
+}
+
+.patient-google-btn {
+  width: 100%;
+  height: 52px;
+  border: 1.5px solid #e2e7f0;
+  border-radius: 999px;
+  background: #ffffff;
+  color: #3f4b66;
+  font-size: 15px;
+  font-weight: 500;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+}
+
+.patient-register-login-text {
+  margin-top: 10px;
+  text-align: center;
+  color: #7f889d;
+  font-size: 13px;
+}
+
+.patient-register-socials {
+  margin-top: 10px;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  color: #8e97ad;
+  font-size: 16px;
+}
+
+@media (max-width: 1100px) {
+  .patient-register-page {
+    height: auto;
+    min-height: 100vh;
+    overflow: visible;
+  }
+
+  .patient-register-container {
+    height: auto;
+    grid-template-columns: 1fr;
+  }
+
+  .patient-register-left {
+    display: none;
+  }
+
+  .patient-register-right {
+    padding: 28px 24px 24px;
+  }
+
+  .patient-register-title {
+    font-size: 40px;
+  }
+}
+
+@media (max-width: 640px) {
+  .patient-register-row {
+    grid-template-columns: 1fr;
+  }
+
+  .patient-phone-input {
+    flex-direction: column;
+    height: auto;
+    border-radius: 22px;
+  }
+
+  .patient-phone-prefix {
+    width: 100%;
+    min-width: unset;
+    height: 48px;
+    border-right: none;
+    border-bottom: 1px solid #e2e7f0;
+  }
+
+  .patient-phone-input input {
+    height: 52px;
+    width: 100%;
   }
 }
