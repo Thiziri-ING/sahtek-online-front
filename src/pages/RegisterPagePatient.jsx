@@ -114,7 +114,7 @@ function RegisterPagePatient() {
           <h1 className="patient-register-title">Create Your Account</h1>
 
           <form className="patient-register-form" onSubmit={handleSubmit}>
-            <div className="patient-register-row">
+            <div className="patient-register-grid">
               <input
                 name="firstName"
                 type="text"
@@ -129,9 +129,6 @@ function RegisterPagePatient() {
                 value={formData.lastName}
                 onChange={handleChange}
               />
-            </div>
-
-            <div className="patient-register-row">
               <input
                 name="dateOfBirth"
                 type="date"
@@ -149,23 +146,19 @@ function RegisterPagePatient() {
                 </select>
                 <span className="patient-select-arrow">&gt;</span>
               </div>
-            </div>
-
-            <div className="patient-phone-input">
-              <div className="patient-phone-prefix">
-                <span className="patient-flag">DZ</span>
-                <span className="patient-code">+213</span>
+              <div className="patient-phone-input">
+                <div className="patient-phone-prefix">
+                  <span className="patient-flag">DZ</span>
+                  <span className="patient-code">+213</span>
+                </div>
+                <input
+                  name="phoneNumber"
+                  type="text"
+                  placeholder="0555123456"
+                  value={formData.phoneNumber}
+                  onChange={handleChange}
+                />
               </div>
-              <input
-                name="phoneNumber"
-                type="text"
-                placeholder="0555123456"
-                value={formData.phoneNumber}
-                onChange={handleChange}
-              />
-            </div>
-
-            <div className="patient-register-row">
               <div className="patient-register-select-wrap">
                 <select
                   name="bloodType"
@@ -188,6 +181,7 @@ function RegisterPagePatient() {
               </div>
 
               <input
+                className="patient-register-field--full"
                 name="email"
                 type="email"
                 placeholder="Email"
@@ -195,9 +189,6 @@ function RegisterPagePatient() {
                 onChange={handleChange}
                 autoComplete="email"
               />
-            </div>
-
-            <div className="patient-register-row">
               <input
                 name="password"
                 type="password"
@@ -220,34 +211,38 @@ function RegisterPagePatient() {
               <p className="form-message form-message--error">{formError}</p>
             ) : null}
 
-            <button
-              type="submit"
-              className="patient-register-btn"
-              disabled={isSubmitting}
-            >
-              {isSubmitting ? "Creating Account..." : "Create Account"}
-            </button>
+            <div className="patient-register-actions">
+              <button
+                type="submit"
+                className="patient-register-btn"
+                disabled={isSubmitting}
+              >
+                {isSubmitting ? "Creating Account..." : "Create Account"}
+              </button>
 
-            <button
-              type="button"
-              className="patient-google-btn"
-              disabled={isSubmitting}
-            >
-              <span className="patient-google-icon">
-                <FcGoogle />
-              </span>
-              <span>Continue with Google</span>
-            </button>
+              <button
+                type="button"
+                className="patient-google-btn"
+                disabled={isSubmitting}
+              >
+                <span className="patient-google-icon">
+                  <FcGoogle />
+                </span>
+                <span>Google</span>
+              </button>
+            </div>
           </form>
 
-          <p className="patient-register-login-text">
-            Already have an account? <Link to="/">Log In</Link>
-          </p>
+          <div className="patient-register-footer">
+            <p className="patient-register-login-text">
+              Already have an account? <Link to="/">Log In</Link>
+            </p>
 
-          <div className="patient-register-socials">
-            <span><FaFacebookF /></span>
-            <span><FaTwitter /></span>
-            <span><FaLinkedinIn /></span>
+            <div className="patient-register-socials">
+              <span><FaFacebookF /></span>
+              <span><FaTwitter /></span>
+              <span><FaLinkedinIn /></span>
+            </div>
           </div>
         </div>
       </div>

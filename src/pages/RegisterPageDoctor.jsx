@@ -114,7 +114,7 @@ function RegisterPageDoctor() {
           <h1 className="doctor-register-title">Create Your Account</h1>
 
           <form className="doctor-register-form" onSubmit={handleSubmit}>
-            <div className="doctor-register-name-row">
+            <div className="doctor-register-grid">
               <input
                 name="firstName"
                 type="text"
@@ -129,9 +129,6 @@ function RegisterPageDoctor() {
                 value={formData.lastName}
                 onChange={handleChange}
               />
-            </div>
-
-            <div className="doctor-register-name-row">
               <input
                 name="dateOfBirth"
                 type="date"
@@ -145,47 +142,43 @@ function RegisterPageDoctor() {
                 value={formData.speciality}
                 onChange={handleChange}
               />
-            </div>
-
-            <input
-              name="serialNumber"
-              type="text"
-              placeholder="Serial Number"
-              value={formData.serialNumber}
-              onChange={handleChange}
-            />
-
-            <div className="doctor-phone-input">
-              <div className="doctor-phone-prefix">
-                <span className="doctor-flag">DZ</span>
-                <span className="doctor-code">+213</span>
-              </div>
               <input
-                name="phoneNumber"
+                name="serialNumber"
                 type="text"
-                placeholder="Phone Number"
-                value={formData.phoneNumber}
+                placeholder="Serial Number"
+                value={formData.serialNumber}
                 onChange={handleChange}
               />
-            </div>
-
-            <input
-              name="establishment"
-              type="text"
-              placeholder="Hospital / Clinic"
-              value={formData.establishment}
-              onChange={handleChange}
-            />
-            <input
-              name="email"
-              type="email"
-              placeholder="Email"
-              value={formData.email}
-              onChange={handleChange}
-              autoComplete="email"
-            />
-
-            <div className="doctor-register-name-row">
+              <div className="doctor-phone-input">
+                <div className="doctor-phone-prefix">
+                  <span className="doctor-flag">DZ</span>
+                  <span className="doctor-code">+213</span>
+                </div>
+                <input
+                  name="phoneNumber"
+                  type="text"
+                  placeholder="Phone Number"
+                  value={formData.phoneNumber}
+                  onChange={handleChange}
+                />
+              </div>
+              <input
+                className="doctor-register-field--full"
+                name="establishment"
+                type="text"
+                placeholder="Hospital / Clinic"
+                value={formData.establishment}
+                onChange={handleChange}
+              />
+              <input
+                className="doctor-register-field--full"
+                name="email"
+                type="email"
+                placeholder="Email"
+                value={formData.email}
+                onChange={handleChange}
+                autoComplete="email"
+              />
               <input
                 name="password"
                 type="password"
@@ -208,34 +201,38 @@ function RegisterPageDoctor() {
               <p className="form-message form-message--error">{formError}</p>
             ) : null}
 
-            <button
-              type="submit"
-              className="doctor-register-btn"
-              disabled={isSubmitting}
-            >
-              {isSubmitting ? "Creating Account..." : "Create Account"}
-            </button>
+            <div className="doctor-register-actions">
+              <button
+                type="submit"
+                className="doctor-register-btn"
+                disabled={isSubmitting}
+              >
+                {isSubmitting ? "Creating Account..." : "Create Account"}
+              </button>
 
-            <button
-              type="button"
-              className="doctor-google-btn"
-              disabled={isSubmitting}
-            >
-              <span className="doctor-google-icon">
-                <FcGoogle />
-              </span>
-              <span>Continue with Google</span>
-            </button>
+              <button
+                type="button"
+                className="doctor-google-btn"
+                disabled={isSubmitting}
+              >
+                <span className="doctor-google-icon">
+                  <FcGoogle />
+                </span>
+                <span>Google</span>
+              </button>
+            </div>
           </form>
 
-          <p className="doctor-register-login-text">
-            Already have an account? <Link to="/">Log In</Link>
-          </p>
+          <div className="doctor-register-footer">
+            <p className="doctor-register-login-text">
+              Already have an account? <Link to="/">Log In</Link>
+            </p>
 
-          <div className="doctor-register-socials">
-            <span><FaFacebookF /></span>
-            <span><FaTwitter /></span>
-            <span><FaLinkedinIn /></span>
+            <div className="doctor-register-socials">
+              <span><FaFacebookF /></span>
+              <span><FaTwitter /></span>
+              <span><FaLinkedinIn /></span>
+            </div>
           </div>
         </div>
       </div>

@@ -397,7 +397,7 @@ body,
 }
 
 .register-logo-image {
-  width: 128px;
+  width: 300px;
   max-width: 100%;
   height: auto;
   object-fit: contain;
@@ -537,20 +537,29 @@ body,
   }
 }
 .role-page {
-  min-height: 100vh;
-  background: #f6f8fc;
+  width: 100%;
+  height: 100dvh;
+  min-height: 100dvh;
+  background:
+    radial-gradient(circle at top left, rgba(255, 255, 255, 0.78), transparent 30%),
+    linear-gradient(180deg, #f6f9ff 0%, #edf4ff 100%);
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 32px 20px;
+  padding: 18px 28px;
+  overflow: hidden;
 }
 
 .role-wrapper {
   width: 100%;
-  max-width: 860px;
+  height: 100%;
+  max-width: none;
+  max-height: none;
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
+  padding: 10px 0;
 }
 
 .role-logo {
@@ -558,42 +567,45 @@ body,
 }
 
 .role-logo-image {
-  width: 290px;
+  width: 300px;
   max-width: 100%;
   height: auto;
   object-fit: contain;
 }
 
 .role-title {
-  font-size: 64px;
-  line-height: 1.1;
+  font-size: clamp(50px, 5vw, 68px);
+  line-height: 1.04;
   font-weight: 500;
   color: #2f3b59;
   text-align: center;
   margin-bottom: 10px;
+  letter-spacing: -0.03em;
+  max-width: 1040px;
 }
 
 .role-subtitle {
-  font-size: 27px;
+  font-size: clamp(20px, 2.2vw, 28px);
   color: #7d8aa5;
   text-align: center;
-  margin-bottom: 34px;
+  margin-bottom: 28px;
+  max-width: 720px;
 }
 
 .role-cards {
   width: 100%;
   display: flex;
   justify-content: center;
-  gap: 42px;
-  margin-bottom: 42px;
+  gap: clamp(32px, 4.6vw, 96px);
+  margin-bottom: 28px;
   flex-wrap: wrap;
 }
 
 .role-card {
-  width: 320px;
-  min-height: 300px;
+  width: min(100%, 400px);
+  min-height: 320px;
   background: linear-gradient(180deg, #f7fbff 0%, #edf4ff 100%);
-  border-radius: 26px;
+  border-radius: 24px;
   border: 2px solid #dbe7f7;
   box-shadow: 0 16px 30px rgba(125, 157, 210, 0.16);
   overflow: hidden;
@@ -615,33 +627,33 @@ body,
 
 .role-card-image-wrap {
   width: 100%;
-  height: 200px;
+  height: 214px;
   background: linear-gradient(180deg, #eef5ff 0%, #e8f0fc 100%);
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 12px;
+  padding: 14px;
 }
 
 .role-card-image {
   width: 100%;
-  max-width: 240px;
+  max-width: 276px;
   height: 100%;
   object-fit: contain;
 }
 
 .role-card-title {
-  font-size: 28px;
+  font-size: 31px;
   font-weight: 600;
   color: #2f3b59;
   text-align: center;
-  padding: 28px 14px 30px;
+  padding: 30px 18px 26px;
 }
 
 .role-login-text {
-  font-size: 24px;
+  font-size: 22px;
   color: #6f7b96;
-  margin-bottom: 34px;
+  margin-bottom: 22px;
   text-align: center;
 }
 
@@ -653,19 +665,32 @@ body,
 
 .role-register-btn {
   width: 100%;
-  max-width: 590px;
+  max-width: 700px;
   height: 74px;
   border: none;
-  border-radius: 20px;
+  border-radius: 18px;
   background: linear-gradient(90deg, #377df4 0%, #6fc3ff 100%);
   color: white;
   font-size: 34px;
-  font-weight: 500;
+  font-weight: 600;
   cursor: pointer;
   box-shadow: 0 10px 20px rgba(55, 125, 244, 0.28);
 }
 
 @media (max-width: 768px) {
+  .role-page {
+    height: auto;
+    min-height: 100vh;
+    overflow: visible;
+    padding: 24px 16px;
+  }
+
+  .role-wrapper {
+    height: auto;
+    max-height: none;
+    padding: 0;
+  }
+
   .role-title {
     font-size: 42px;
   }
@@ -688,16 +713,84 @@ body,
     max-width: 340px;
   }
 }
+
+@media (max-height: 860px) and (min-width: 769px) {
+  .role-page {
+    padding: 16px;
+  }
+
+  .role-wrapper {
+    height: 100%;
+    max-height: calc(100dvh - 32px);
+    padding: 4px 0;
+  }
+
+  .role-logo {
+    margin-bottom: 8px;
+  }
+
+  .role-logo-image {
+    width: 248px;
+  }
+
+  .role-title {
+    font-size: 48px;
+    margin-bottom: 6px;
+  }
+
+  .role-subtitle {
+    font-size: 20px;
+    margin-bottom: 20px;
+  }
+
+  .role-cards {
+    gap: 24px;
+    margin-bottom: 20px;
+  }
+
+  .role-card {
+    width: 290px;
+    min-height: 244px;
+  }
+
+  .role-card-image-wrap {
+    height: 152px;
+  }
+
+  .role-card-image {
+    max-width: 208px;
+  }
+
+  .role-card-title {
+    font-size: 24px;
+    padding: 20px 12px 18px;
+  }
+
+  .role-login-text {
+    font-size: 20px;
+    margin-bottom: 16px;
+  }
+
+  .role-register-btn {
+    max-width: 520px;
+    height: 62px;
+    font-size: 28px;
+  }
+}
 /*parie doctor*/
 .doctor-register-page {
-  min-height: 100vh;
-  padding: 18px;
+  width: 100%;
+  height: 100dvh;
+  min-height: 100dvh;
+  padding: 14px;
   display: flex;
   align-items: center;
   justify-content: center;
-  overflow-y: auto;
+  overflow: hidden;
+  box-sizing: border-box;
   background:
-    linear-gradient(rgba(65, 146, 245, 0.45), rgba(65, 146, 245, 0.18)),
+    radial-gradient(circle at top left, rgba(255, 255, 255, 0.34), transparent 32%),
+    linear-gradient(rgba(50, 131, 232, 0.5), rgba(24, 88, 180, 0.24)),
     url("../assets/registerpage.jpg");
   background-size: cover;
   background-position: center;
@@ -706,125 +799,178 @@ body,
 .doctor-register-container {
   width: 100%;
   max-width: 1280px;
-  min-height: calc(100vh - 36px);
-  height: auto;
+  height: 100%;
+  max-height: calc(100dvh - 28px);
   display: grid;
   grid-template-columns: 1fr 1fr;
-  background: rgba(255, 255, 255, 0.88);
-  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.82);
+  border-radius: 28px;
   overflow: hidden;
-  border: 2px solid rgba(227, 231, 241, 0.9);
-  box-shadow: 0 20px 55px rgba(34, 89, 168, 0.18);
-  backdrop-filter: blur(3px);
+  border: 1px solid rgba(227, 235, 247, 0.92);
+  box-shadow: 0 28px 80px rgba(26, 79, 155, 0.2);
+  backdrop-filter: blur(8px);
 }
 
 .doctor-register-left {
-  height: auto;
-  min-height: 100%;
+  height: 100%;
   background:
-    linear-gradient(rgba(31, 127, 230, 0.28), rgba(31, 127, 230, 0.28)),
+    linear-gradient(rgba(22, 103, 204, 0.24), rgba(18, 74, 154, 0.36)),
     url("../assets/registerpage.jpg");
   background-size: cover;
   background-position: center;
-  border-right: 1px solid rgba(220, 226, 240, 0.95);
+  border-right: 1px solid rgba(220, 226, 240, 0.78);
 }
 
 .doctor-register-right {
-  height: auto;
-  min-height: 100%;
-  background: rgba(255, 255, 255, 0.92);
+  height: 100%;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.98) 0%, rgba(246, 250, 255, 0.95) 100%);
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding: 28px 48px 28px;
+  padding: 20px 40px 18px;
 }
 
 .doctor-register-logo {
   text-align: center;
-  margin-bottom: 8px;
+  margin-top: -6px;
+  margin-bottom: 4px;
 }
 
 .doctor-register-logo-image {
-  width: 150px;
+  width: 300px;
   max-width: 100%;
   height: auto;
   object-fit: contain;
+  filter: drop-shadow(0 10px 20px rgba(34, 89, 168, 0.12));
 }
 
 .doctor-register-title {
   text-align: center;
-  font-size: 48px;
+  font-size: clamp(34px, 3vw, 42px);
   font-weight: 600;
-  line-height: 1.05;
+  line-height: 1.02;
   color: #153b72;
-  margin-bottom: 18px;
+  margin-bottom: 14px;
+  letter-spacing: -0.03em;
 }
 
 .doctor-register-form {
   display: flex;
   flex-direction: column;
+  gap: 10px;
+}
+
+.doctor-register-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 12px;
 }
 
-.doctor-register-name-row {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 12px;
+.doctor-register-grid > * {
+  min-width: 0;
+}
+
+.doctor-register-field--full {
+  grid-column: 1 / -1;
 }
 
 .doctor-register-form input {
   width: 100%;
-  height: 52px;
-  border: 1.5px solid #e2e7f0;
+  height: 50px;
+  border: 1.5px solid #d6e1f0;
   border-radius: 999px;
-  background: #ffffff;
-  padding: 0 22px;
-  font-size: 15px;
+  background: linear-gradient(180deg, #ffffff 0%, #f5f9ff 100%);
+  padding: 0 20px;
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 0.01em;
   color: #42506a;
   outline: none;
-  box-shadow: inset 0 1px 2px rgba(16, 24, 40, 0.02);
+  caret-color: #2c7bf4;
+  box-shadow:
+    inset 0 1px 2px rgba(16, 24, 40, 0.02),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.48),
+    0 10px 20px rgba(33, 84, 153, 0.045);
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease,
+    transform 0.2s ease,
+    background 0.2s ease;
 }
 
 .doctor-register-form input::placeholder {
-  color: #6e7890;
+  color: #8390aa;
+  font-weight: 400;
+}
+
+.doctor-register-form input:hover {
+  border-color: #bdd2ec;
+  box-shadow:
+    inset 0 1px 2px rgba(16, 24, 40, 0.02),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.56),
+    0 12px 24px rgba(33, 84, 153, 0.06);
 }
 
 .doctor-register-form input:focus {
   border-color: #4a97ff;
-  box-shadow: 0 0 0 3px rgba(74, 151, 255, 0.12);
+  background: #ffffff;
+  transform: translateY(-1px);
+  box-shadow:
+    0 0 0 4px rgba(74, 151, 255, 0.14),
+    0 16px 28px rgba(36, 111, 241, 0.09);
 }
 
 .doctor-phone-input {
   display: flex;
   align-items: center;
-  height: 52px;
-  border: 1.5px solid #e2e7f0;
+  height: 50px;
+  border: 1.5px solid #d6e1f0;
   border-radius: 999px;
-  background: #ffffff;
+  background: linear-gradient(180deg, #ffffff 0%, #f5f9ff 100%);
   overflow: hidden;
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 255, 255, 0.48),
+    0 10px 20px rgba(33, 84, 153, 0.045);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+.doctor-phone-input:hover {
+  border-color: #bdd2ec;
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 255, 255, 0.56),
+    0 12px 24px rgba(33, 84, 153, 0.06);
+}
+
+.doctor-phone-input:focus-within {
+  border-color: #4a97ff;
+  transform: translateY(-1px);
+  box-shadow:
+    0 0 0 4px rgba(74, 151, 255, 0.14),
+    0 14px 24px rgba(36, 111, 241, 0.08);
 }
 
 .doctor-phone-prefix {
   height: 100%;
-  min-width: 120px;
+  min-width: 104px;
   display: flex;
   align-items: center;
-  gap: 8px;
-  padding: 0 16px 0 18px;
-  color: #4a546b;
-  border-right: 1px solid #e2e7f0;
-  background: #ffffff;
-  font-size: 14px;
-  font-weight: 500;
+  gap: 6px;
+  padding: 0 12px 0 16px;
+  color: #33527f;
+  border-right: 1px solid #d6e1f0;
+  background: linear-gradient(180deg, #f3f8ff 0%, #e9f2ff 100%);
+  font-size: 13px;
+  font-weight: 600;
 }
 
 .doctor-flag {
-  font-size: 24px;
+  font-size: 18px;
   line-height: 1;
 }
 
 .doctor-code {
-  color: #4a546b;
+  color: #33527f;
 }
 
 .doctor-phone-input input {
@@ -832,76 +978,119 @@ body,
   box-shadow: none;
   height: 100%;
   border-radius: 0;
-  padding: 0 18px;
+  padding: 0 16px;
+  background: transparent;
 }
 
 .doctor-phone-input input:focus {
   box-shadow: none;
 }
 
+.doctor-register-actions {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 10px;
+  margin-top: 4px;
+}
+
 .doctor-register-btn {
   width: 100%;
-  height: 54px;
-  margin-top: 4px;
+  height: 48px;
   border: none;
   border-radius: 999px;
-  background: linear-gradient(90deg, #56a5ff 0%, #2476f3 100%);
+  background: linear-gradient(90deg, #60b0ff 0%, #2c7bf4 100%);
   color: #ffffff;
-  font-size: 18px;
-  font-weight: 600;
+  font-size: 16px;
+  font-weight: 700;
   cursor: pointer;
-  box-shadow: 0 12px 24px rgba(45, 118, 243, 0.23);
+  box-shadow: 0 16px 28px rgba(45, 118, 243, 0.26);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, filter 0.2s ease;
+}
+
+.doctor-register-btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 20px 34px rgba(45, 118, 243, 0.3);
+  filter: saturate(1.05);
 }
 
 .doctor-google-btn {
   width: 100%;
-  height: 52px;
-  border: 1.5px solid #e2e7f0;
+  height: 48px;
+  border: 1.5px solid #dbe5f2;
   border-radius: 999px;
-  background: #ffffff;
-  color: #3f4b66;
-  font-size: 15px;
-  font-weight: 500;
+  background: linear-gradient(180deg, #ffffff 0%, #f9fbff 100%);
+  color: #41506d;
+  font-size: 14px;
+  font-weight: 600;
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 12px;
+  gap: 8px;
+  box-shadow: 0 8px 18px rgba(33, 84, 153, 0.05);
+  transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.doctor-google-btn:hover {
+  transform: translateY(-1px);
+  border-color: #c8d9ee;
+  box-shadow: 0 14px 24px rgba(33, 84, 153, 0.08);
 }
 
 .doctor-google-icon {
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 24px;
+  font-size: 20px;
+}
+
+.doctor-register-footer {
+  margin-top: 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
 }
 
 .doctor-register-login-text {
-  margin-top: 10px;
+  margin: 0;
   text-align: center;
-  color: #7f889d;
-  font-size: 13px;
+  color: #7b87a1;
+  font-size: 14px;
 }
 
 .doctor-register-login-text a {
-  color: #2e3e63;
+  color: #1d4f9c;
   font-weight: 700;
   text-decoration: underline;
+  text-underline-offset: 3px;
 }
 
 .doctor-register-socials {
-  margin-top: 10px;
   display: flex;
   justify-content: center;
-  gap: 20px;
-  color: #8e97ad;
+  gap: 24px;
+  color: #7f8aa2;
   font-size: 16px;
 }
 
 .doctor-register-socials span {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  border: 1px solid #dbe5f2;
+  background: rgba(255, 255, 255, 0.9);
+  box-shadow: 0 10px 20px rgba(33, 84, 153, 0.05);
   display: flex;
   align-items: center;
   justify-content: center;
+  transition: transform 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+}
+
+.doctor-register-socials span:hover {
+  transform: translateY(-2px);
+  border-color: #c4d6ef;
+  color: #2c7bf4;
 }
 
 @media (max-width: 1100px) {
@@ -913,6 +1102,7 @@ body,
 
   .doctor-register-container {
     height: auto;
+    max-height: none;
     grid-template-columns: 1fr;
   }
 
@@ -929,13 +1119,309 @@ body,
   }
 }
 
+/*patient part css*/
+
+.patient-register-page {
+  width: 100%;
+  height: 100dvh;
+  min-height: 100dvh;
+  padding: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  box-sizing: border-box;
+  background:
+    radial-gradient(circle at top left, rgba(255, 255, 255, 0.34), transparent 32%),
+    linear-gradient(rgba(50, 131, 232, 0.5), rgba(24, 88, 180, 0.24)),
+    url("../assets/registerpage.jpg");
+  background-size: cover;
+  background-position: center;
+}
+.patient-register-container {
+  width: 100%;
+  max-width: 1280px;
+  height: 100%;
+  max-height: calc(100dvh - 28px);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  background: rgba(255, 255, 255, 0.82);
+  border-radius: 28px;
+  overflow: hidden;
+  border: 1px solid rgba(227, 235, 247, 0.92);
+  box-shadow: 0 28px 80px rgba(26, 79, 155, 0.2);
+  backdrop-filter: blur(8px);
+}
+.patient-register-left {
+  height: 100%;
+  background:
+    linear-gradient(rgba(22, 103, 204, 0.24), rgba(18, 74, 154, 0.36)),
+    url("../assets/registerpage.jpg");
+  background-size: cover;
+  background-position: center;
+  border-right: 1px solid rgba(220, 226, 240, 0.78);
+}
+
+.patient-register-right {
+  height: 100%;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.98) 0%, rgba(246, 250, 255, 0.95) 100%);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 20px 40px 18px;
+}
+
+.patient-register-logo {
+  text-align: center;
+  margin-top: -6px;
+  margin-bottom: 4px;
+}
+
+.patient-register-logo-image {
+  width: 300px;
+  max-width: 100%;
+  height: auto;
+  object-fit: contain;
+  filter: drop-shadow(0 10px 20px rgba(34, 89, 168, 0.12));
+}
+
+.patient-register-title {
+  text-align: center;
+  font-size: clamp(34px, 3vw, 42px);
+  font-weight: 600;
+  line-height: 1.02;
+  color: #153b72;
+  margin-bottom: 14px;
+  letter-spacing: -0.03em;
+}
+
+.patient-register-form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.patient-register-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.patient-register-grid > * {
+  min-width: 0;
+}
+
+.patient-register-field--full {
+  grid-column: 1 / -1;
+}
+
+.patient-register-form input,
+.patient-register-select-wrap select {
+  width: 100%;
+  height: 50px;
+  border: 1.5px solid #d6e1f0;
+  border-radius: 999px;
+  background: linear-gradient(180deg, #ffffff 0%, #f5f9ff 100%);
+  padding: 0 20px;
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  color: #42506a;
+  outline: none;
+  caret-color: #2c7bf4;
+  box-shadow:
+    inset 0 1px 2px rgba(16, 24, 40, 0.02),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.48),
+    0 10px 20px rgba(33, 84, 153, 0.045);
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease,
+    transform 0.2s ease,
+    background 0.2s ease;
+}
+
+.patient-phone-input {
+  display: flex;
+  align-items: center;
+  height: 50px;
+  border: 1.5px solid #d6e1f0;
+  border-radius: 999px;
+  background: linear-gradient(180deg, #ffffff 0%, #f5f9ff 100%);
+  overflow: hidden;
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 255, 255, 0.48),
+    0 10px 20px rgba(33, 84, 153, 0.045);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+.patient-phone-input:hover {
+  border-color: #bdd2ec;
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 255, 255, 0.56),
+    0 12px 24px rgba(33, 84, 153, 0.06);
+}
+
+.patient-phone-input:focus-within {
+  border-color: #4a97ff;
+  transform: translateY(-1px);
+  box-shadow:
+    0 0 0 4px rgba(74, 151, 255, 0.14),
+    0 14px 24px rgba(36, 111, 241, 0.08);
+}
+
+.patient-phone-prefix {
+  height: 100%;
+  min-width: 104px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 0 12px 0 16px;
+  color: #33527f;
+  border-right: 1px solid #d6e1f0;
+  background: linear-gradient(180deg, #f3f8ff 0%, #e9f2ff 100%);
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.patient-phone-input input {
+  border: none;
+  box-shadow: none;
+  height: 100%;
+  border-radius: 0;
+  padding: 0 16px;
+  background: transparent;
+}
+
+.patient-register-actions {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 10px;
+  margin-top: 4px;
+}
+
+.patient-register-btn {
+  width: 100%;
+  height: 48px;
+  border: none;
+  border-radius: 999px;
+  background: linear-gradient(90deg, #60b0ff 0%, #2c7bf4 100%);
+  color: #ffffff;
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 16px 28px rgba(45, 118, 243, 0.26);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, filter 0.2s ease;
+}
+
+.patient-register-btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 20px 34px rgba(45, 118, 243, 0.3);
+  filter: saturate(1.05);
+}
+
+.patient-google-btn {
+  width: 100%;
+  height: 48px;
+  border: 1.5px solid #dbe5f2;
+  border-radius: 999px;
+  background: linear-gradient(180deg, #ffffff 0%, #f9fbff 100%);
+  color: #41506d;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  box-shadow: 0 8px 18px rgba(33, 84, 153, 0.05);
+  transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.patient-google-btn:hover {
+  transform: translateY(-1px);
+  border-color: #c8d9ee;
+  box-shadow: 0 14px 24px rgba(33, 84, 153, 0.08);
+}
+
+.patient-register-footer {
+  margin-top: 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+
+.patient-register-login-text {
+  margin: 0;
+  text-align: center;
+  color: #7b87a1;
+  font-size: 14px;
+}
+
+.patient-register-socials {
+  display: flex;
+  justify-content: center;
+  gap: 24px;
+  color: #7f8aa2;
+  font-size: 16px;
+}
+
+@media (max-width: 1100px) {
+  .patient-register-page {
+    height: auto;
+    min-height: 100vh;
+    overflow: visible;
+  }
+
+  .patient-register-container {
+    height: auto;
+    max-height: none;
+    grid-template-columns: 1fr;
+  }
+
+  .patient-register-left {
+    display: none;
+  }
+
+  .patient-register-right {
+    padding: 28px 24px 24px;
+  }
+
+  .patient-register-title {
+    font-size: 40px;
+  }
+}
+
 @media (max-width: 640px) {
+  .doctor-register-grid,
+  .patient-register-grid,
+  .doctor-register-actions,
+  .patient-register-actions {
+    grid-template-columns: 1fr;
+  }
+
   .doctor-register-page {
     padding: 18px;
   }
 
-  .doctor-register-name-row {
-    grid-template-columns: 1fr;
+  .patient-phone-input {
+    flex-direction: column;
+    height: auto;
+    border-radius: 22px;
+  }
+
+  .patient-phone-prefix {
+    width: 100%;
+    min-width: unset;
+    height: 48px;
+    border-right: none;
+    border-bottom: 1px solid #e2e7f0;
+  }
+
+  .patient-phone-input input {
+    height: 52px;
+    width: 100%;
   }
 
   .doctor-phone-input {
@@ -956,230 +1442,73 @@ body,
     height: 52px;
     width: 100%;
   }
-}
 
-/*patient part css*/
-
-.patient-register-page {
-  width: 100%;
-  height: 100dvh;
-  min-height: 100dvh;
-  padding: 18px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  overflow: hidden;
-  box-sizing: border-box;
-  background:
-    linear-gradient(rgba(65, 146, 245, 0.45), rgba(65, 146, 245, 0.18)),
-    url("../assets/registerpage.jpg");
-  background-size: cover;
-  background-position: center;
-}
-.patient-register-container {
-  width: 100%;
-  max-width: 1280px;
-  height: 100%;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  background: rgba(255, 255, 255, 0.9);
-  border-radius: 18px;
-  overflow: hidden;
-  border: 2px solid rgba(227, 231, 241, 0.9);
-  box-shadow: 0 20px 55px rgba(34, 89, 168, 0.18);
-  backdrop-filter: blur(3px);
-}
-.patient-register-left {
-  height: 100%;
-  background:
-    linear-gradient(rgba(31, 127, 230, 0.28), rgba(31, 127, 230, 0.28)),
-    url("../assets/registerpage.jpg");
-  background-size: cover;
-  background-position: center;
-  border-right: 1px solid rgba(220, 226, 240, 0.95);
-}
-
-.patient-register-right {
-  height: 100%;
-  background: rgba(255, 255, 255, 0.94);
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  padding: 20px 48px 16px;
-}
-
-.patient-register-logo {
-  text-align: center;
-  margin-bottom: 8px;
-}
-
-.patient-register-logo-image {
-  width: 150px;
-  max-width: 100%;
-  height: auto;
-  object-fit: contain;
-}
-
-.patient-register-title {
-  text-align: center;
-  font-size: 48px;
-  font-weight: 600;
-  line-height: 1.05;
-  color: #153b72;
-  margin-bottom: 18px;
-}
-
-.patient-register-form {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-}
-
-.patient-register-row {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 12px;
-}
-
-.patient-register-form input,
-.patient-register-select-wrap select {
-  width: 100%;
-  height: 52px;
-  border: 1.5px solid #e2e7f0;
-  border-radius: 999px;
-  background: #ffffff;
-  padding: 0 22px;
-  font-size: 15px;
-  color: #42506a;
-  outline: none;
-  box-shadow: inset 0 1px 2px rgba(16, 24, 40, 0.02);
-}
-
-.patient-phone-input {
-  display: flex;
-  align-items: center;
-  height: 52px;
-  border: 1.5px solid #e2e7f0;
-  border-radius: 999px;
-  background: #ffffff;
-  overflow: hidden;
-}
-
-.patient-phone-prefix {
-  height: 100%;
-  min-width: 120px;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  padding: 0 16px 0 18px;
-  color: #4a546b;
-  border-right: 1px solid #e2e7f0;
-  background: #ffffff;
-  font-size: 14px;
-  font-weight: 500;
-}
-
-.patient-phone-input input {
-  border: none;
-  box-shadow: none;
-  height: 100%;
-  border-radius: 0;
-  padding: 0 18px;
-}
-
-.patient-register-btn {
-  width: 100%;
-  height: 54px;
-  margin-top: 4px;
-  border: none;
-  border-radius: 999px;
-  background: linear-gradient(90deg, #56a5ff 0%, #2476f3 100%);
-  color: #ffffff;
-  font-size: 18px;
-  font-weight: 600;
-  cursor: pointer;
-  box-shadow: 0 12px 24px rgba(45, 118, 243, 0.23);
-}
-
-.patient-google-btn {
-  width: 100%;
-  height: 52px;
-  border: 1.5px solid #e2e7f0;
-  border-radius: 999px;
-  background: #ffffff;
-  color: #3f4b66;
-  font-size: 15px;
-  font-weight: 500;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 12px;
-}
-
-.patient-register-login-text {
-  margin-top: 10px;
-  text-align: center;
-  color: #7f889d;
-  font-size: 13px;
-}
-
-.patient-register-socials {
-  margin-top: 10px;
-  display: flex;
-  justify-content: center;
-  gap: 20px;
-  color: #8e97ad;
-  font-size: 16px;
-}
-
-@media (max-width: 1100px) {
-  .patient-register-page {
-    height: auto;
-    min-height: 100vh;
-    overflow: visible;
+  .doctor-register-footer,
+  .patient-register-footer {
+    align-items: center;
   }
 
-  .patient-register-container {
-    height: auto;
-    grid-template-columns: 1fr;
+  .doctor-register-login-text,
+  .patient-register-login-text {
+    text-align: center;
   }
+}
 
-  .patient-register-left {
-    display: none;
-  }
-
+@media (max-height: 860px) and (min-width: 1101px) {
+  .doctor-register-right,
   .patient-register-right {
-    padding: 28px 24px 24px;
+    padding: 16px 32px 14px;
   }
 
+  .doctor-register-logo,
+  .patient-register-logo {
+    margin-top: -2px;
+    margin-bottom: 2px;
+  }
+
+  .doctor-register-logo-image,
+  .patient-register-logo-image {
+    width: 200px;
+  }
+
+  .doctor-register-title,
   .patient-register-title {
-    font-size: 40px;
-  }
-}
-
-@media (max-width: 640px) {
-  .patient-register-row {
-    grid-template-columns: 1fr;
+    font-size: 32px;
+    margin-bottom: 10px;
   }
 
-  .patient-phone-input {
-    flex-direction: column;
-    height: auto;
-    border-radius: 22px;
+  .doctor-register-form,
+  .patient-register-form {
+    gap: 7px;
   }
 
-  .patient-phone-prefix {
-    width: 100%;
-    min-width: unset;
-    height: 48px;
-    border-right: none;
-    border-bottom: 1px solid #e2e7f0;
+  .doctor-register-grid,
+  .patient-register-grid {
+    gap: 9px;
   }
 
-  .patient-phone-input input {
-    height: 52px;
-    width: 100%;
+  .doctor-register-form input,
+  .doctor-phone-input,
+  .doctor-register-btn,
+  .doctor-google-btn,
+  .patient-register-form input,
+  .patient-register-select-wrap select,
+  .patient-phone-input,
+  .patient-register-btn,
+  .patient-google-btn {
+    height: 42px;
+    font-size: 13px;
+  }
+
+  .doctor-register-footer,
+  .patient-register-footer {
+    margin-top: 6px;
+  }
+
+  .doctor-register-socials,
+  .patient-register-socials {
+    gap: 12px;
+    font-size: 14px;
   }
 }
 
@@ -1210,13 +1539,26 @@ body,
 
 .patient-register-form input::placeholder,
 .patient-register-select-wrap select {
-  color: #6e7890;
+  color: #8390aa;
+}
+
+.patient-register-form input:hover,
+.patient-register-select-wrap select:hover {
+  border-color: #bdd2ec;
+  box-shadow:
+    inset 0 1px 2px rgba(16, 24, 40, 0.02),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.56),
+    0 12px 24px rgba(33, 84, 153, 0.06);
 }
 
 .patient-register-form input:focus,
 .patient-register-select-wrap select:focus {
   border-color: #4a97ff;
-  box-shadow: 0 0 0 3px rgba(74, 151, 255, 0.12);
+  background: #ffffff;
+  transform: translateY(-1px);
+  box-shadow:
+    0 0 0 4px rgba(74, 151, 255, 0.14),
+    0 16px 28px rgba(36, 111, 241, 0.09);
 }
 
 .patient-register-select-wrap {
@@ -1226,7 +1568,9 @@ body,
 
 .patient-register-select-wrap select {
   appearance: none;
-  padding-right: 56px;
+  padding-right: 58px;
+  cursor: pointer;
+  font-weight: 600;
 }
 
 .patient-select-arrow {
@@ -1234,7 +1578,8 @@ body,
   top: 50%;
   right: 22px;
   transform: translateY(-50%) rotate(90deg);
-  color: #6e7890;
+  color: #5c7fb4;
+  font-size: 13px;
   pointer-events: none;
 }
 
@@ -1246,15 +1591,29 @@ body,
 }
 
 .patient-register-login-text a {
-  color: #2e3e63;
+  color: #1d4f9c;
   font-weight: 700;
   text-decoration: underline;
+  text-underline-offset: 3px;
 }
 
 .patient-register-socials span {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  border: 1px solid #dbe5f2;
+  background: rgba(255, 255, 255, 0.9);
+  box-shadow: 0 10px 20px rgba(33, 84, 153, 0.05);
   display: flex;
   align-items: center;
   justify-content: center;
+  transition: transform 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+}
+
+.patient-register-socials span:hover {
+  transform: translateY(-2px);
+  border-color: #c4d6ef;
+  color: #2c7bf4;
 }
 
 .route-status-page,
