@@ -9,8 +9,15 @@ export function PageHeader({ title, description }) {
   const role = (user?.role || "patient").toLowerCase();
   const isDoctor = role.includes("doctor");
 
-  const userInitial = user?.name?.[0]?.toUpperCase() || user?.email?.[0]?.toUpperCase() || "A";
-  const userName = user?.name || (isDoctor ? "Dr Dehmani" : "Dehmani Mohamed");
+  const buildFullName = () => {
+    if (user?.firstName || user?.lastName) {
+      return [user?.firstName, user?.lastName].filter(Boolean).join(" ");
+    }
+    return user?.name || "";
+  };
+
+  const userName = buildFullName() || (isDoctor ? "Dr Dehmani" : "Dehmani Mohamed");
+  const userInitial = userName?.[0]?.toUpperCase() || user?.email?.[0]?.toUpperCase() || "A";
   const userSubtitle = isDoctor ? user?.speciality || "Urologist" : "Patient";
 
   function handleUserClick() {

@@ -4,7 +4,7 @@ import { FiGrid, FiClock, FiUsers, FiActivity, FiMessageCircle } from "react-ico
 const patientMenu = [
   { label: "Overview", to: "/patient-dashboard", icon: <FiGrid /> },
   { label: "Appointment", to: "/appointments", icon: <FiClock /> },
-  { label: "Schedule", to: "/doctors", icon: <FiUsers /> },
+  { label: "Schedule", to: "/schedule", icon: <FiUsers /> },
   { label: "Analysis", to: "/analysis", icon: <FiActivity /> },
   { label: "Consultation", to: "/consultation", icon: <FiMessageCircle /> },
 ];

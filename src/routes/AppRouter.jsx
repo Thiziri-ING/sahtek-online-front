@@ -5,23 +5,19 @@ import DashboardRedirectPage from "../pages/DashboardRedirectPage";
 import DoctorOverviewPage from "../features/dashboard/doctor/DoctorOverviewPage";
 import LoginPage from "../features/auth/LoginPage";
 import PatientDashboardPage from "../features/dashboard/patient/PatientDashboardPage";
-import RegisterDoctorPage from "../features/auth/RegisterDoctorPage";
-import RegisterPatientPage from "../features/auth/RegisterPatientPage";
+import RegisterPageDoctor from "../features/auth/RegisterDoctorPage";
+import RegisterPagePatient from "../features/auth/RegisterPatientPage";
 import RoleSelectionPage from "../features/auth/RoleSelectionPage";
 import AccountSettingsPage from "../features/profile/AccountSettingsPage";
 import PatientOverviewPage from "../features/dashboard/patient/PatientOverviewPage";
 import PatientProfilePage from "../features/profile/PatientProfilePage";
 import DoctorProfilePage from "../features/profile/DoctorProfilePage";
-import DoctorAppointmentsPage from "../features/appointments/DoctorAppointmentsPage";
 import PatientAppointmentsPage from "../features/appointments/PatientAppointmentsPage";
-import ConsultationListPage from "../features/consultations/ConsultationListPage";
-import ConsultationDetailsPage from "../features/consultations/ConsultationDetailsPage";
+import PatientSchedulePage from "../features/appointments/PatientSchedulePage";
+import PatientConsultationPage from "../features/consultations/ConsultationListPage";
+import PatientConsultationDetailPage from "../features/consultations/ConsultationDetailsPage";
 import PatientAnalysisPage from "../features/analysis/PatientAnalysisPage";
-import DoctorConsultationPage from "../features/consultations/DoctorConsultationPage";
-import DoctorPatientsPage from "../features/consultations/DoctorPatientsPage";
-import DoctorSchedulePage from "../features/appointments/DoctorSchedulePage";
-import DoctorSetAvailabilityPage from "../features/appointments/DoctorSetAvailabilityPage";
-import HelpPage from "../pages/HelpPage";
+
 function AppRouter() {
   return (
     <Routes>
@@ -45,7 +41,7 @@ function AppRouter() {
         path="/register/doctor"
         element={
           <PublicOnlyRoute>
-            <RegisterDoctorPage />
+            <RegisterPageDoctor />
           </PublicOnlyRoute>
         }
       />
@@ -53,7 +49,7 @@ function AppRouter() {
         path="/register/patient"
         element={
           <PublicOnlyRoute>
-            <RegisterPatientPage />
+            <RegisterPagePatient />
           </PublicOnlyRoute>
         }
       />
@@ -94,15 +90,7 @@ function AppRouter() {
         path="/consultation"
         element={
           <PrivateRoute allowedRoles={["PATIENT"]}>
-            <ConsultationListPage />
-          </PrivateRoute>
-        }
-      />
-      <Route
-        path="/doctor/consultation"
-        element={
-          <PrivateRoute allowedRoles={["DOCTOR"]}>
-            <DoctorConsultationPage />
+            <PatientConsultationPage />
           </PrivateRoute>
         }
       />
@@ -110,7 +98,7 @@ function AppRouter() {
         path="/consultation/:consultationId"
         element={
           <PrivateRoute allowedRoles={["PATIENT"]}>
-            <ConsultationDetailsPage />
+            <PatientConsultationDetailPage />
           </PrivateRoute>
         }
       />
@@ -131,14 +119,6 @@ function AppRouter() {
         }
       />
       <Route
-        path="/doctor/appointments"
-        element={
-          <PrivateRoute allowedRoles={["DOCTOR"]}>
-            <DoctorAppointmentsPage />
-          </PrivateRoute>
-        }
-      />
-      <Route
         path="/patient-dashboard"
         element={
           <PrivateRoute allowedRoles={["PATIENT"]}>
@@ -155,15 +135,6 @@ function AppRouter() {
         }
       />
       <Route
-        path="/doctor-appointments"
-        element={
-          <PrivateRoute>
-            <DoctorAppointmentsPage />
-          </PrivateRoute>
-        }
-      />
-
-      <Route
         path="/appointments"
         element={
           <PrivateRoute allowedRoles={["PATIENT"]}>
@@ -172,34 +143,26 @@ function AppRouter() {
         }
       />
       <Route
-        path="/patients"
+        path="/appointments/book"
         element={
-          <PrivateRoute>
-            <DoctorPatientsPage />
+          <PrivateRoute allowedRoles={["PATIENT"]}>
+            <PatientSchedulePage />
           </PrivateRoute>
         }
       />
       <Route
-        path="/availability"
+        path="/schedule"
         element={
-          <PrivateRoute allowedRoles={["DOCTOR"]}>
-            <DoctorSchedulePage />
+          <PrivateRoute allowedRoles={["PATIENT"]}>
+            <PatientSchedulePage />
           </PrivateRoute>
         }
       />
       <Route
-        path="/set-availability"
+        path="/doctors"
         element={
-          <PrivateRoute allowedRoles={["DOCTOR"]}>
-            <DoctorSetAvailabilityPage />
-          </PrivateRoute>
-        }
-      />
-      <Route
-        path="/help"
-        element={
-          <PrivateRoute>
-            <HelpPage />
+          <PrivateRoute allowedRoles={["PATIENT"]}>
+            <PatientSchedulePage />
           </PrivateRoute>
         }
       />
